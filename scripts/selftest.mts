@@ -57,7 +57,18 @@ const rc = makeReceipt({ a: 1, b: { y: 2, x: 1 } });
 assert.equal(verifyReceipt(rc).valid, true);
 assert.equal(makeReceipt({ b: { x: 1, y: 2 }, a: 1 }).hash, rc.hash); // key order does not matter
 assert.equal(verifyReceipt({ ...rc, body: { a: 2, b: { y: 2, x: 1 } } }).valid, false);
-console.log("part 1 ok: verdict, policy, receipt logic");
+// wallet address helper (MetaMask / injected wallets)
+const { pickProvider, requestAddress } = await import("../lib/metamask");
+const ADDR = "0x" + "a1".repeat(20);
+assert.equal(pickProvider({}), null);
+assert.equal(await requestAddress({ request: async () => [ADDR] }), ADDR);
+const mm = { isMetaMask: true, request: async () => [ADDR] };
+assert.equal(pickProvider({ ethereum: { request: async () => [], providers: [{ request: async () => [] }, mm] } }), mm);
+await assert.rejects(() => requestAddress({ request: async () => { throw { code: 4001 }; } }), /declined/);
+await assert.rejects(() => requestAddress({ request: async () => { throw { code: -32002 }; } }), /already open/);
+await assert.rejects(() => requestAddress({ request: async () => [] }), /did not return an account/);
+await assert.rejects(() => requestAddress({ request: async () => ["not-an-address"] }), /did not return an account/);
+console.log("part 1 ok: verdict, policy, receipt logic, wallet helper");
 
 // ---------- Part 2: whole pipeline against a stubbed API
 import { TOKEN, WALLET, paths, installStub } from "./stub-api.mts";

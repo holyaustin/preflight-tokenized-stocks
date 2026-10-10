@@ -1,8 +1,9 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import type { PreflightResult } from "@/lib/preflight";
 import Result from "./Result";
+import { pickProvider, requestAddress, type Eip1193 } from "@/lib/metamask";
 
 type Compare = {
   ticker: string;
@@ -19,6 +20,10 @@ const POLICIES = [
 const SAMPLES = ["NVDA", "TSLA", "AAPL", "AMD"];
 const ADDRESS = /^0x[a-fA-F0-9]{40}$/;
 
+declare global {
+  interface Window { ethereum?: Eip1193 }
+}
+
 export default function Checker() {
   const [ticker, setTicker] = useState("NVDA");
   const [usd, setUsd] = useState("5");
@@ -28,6 +33,18 @@ export default function Checker() {
   const [error, setError] = useState("");
   const [single, setSingle] = useState<PreflightResult | null>(null);
   const [cmp, setCmp] = useState<Compare | null>(null);
+  const [provider, setProvider] = useState<Eip1193 | null>(null);
+  const [walletMsg, setWalletMsg] = useState("");
+
+  // Detect an injected wallet after the page loads (window does not exist on the server).
+  useEffect(() => { setProvider(pickProvider(window)); }, []);
+
+  async function useMyAddress() {
+    if (!provider) return;
+    setWalletMsg("");
+    try { setWallet(await requestAddress(provider)); }
+    catch (e: any) { setWalletMsg(e.message); }
+  }
 
   async function run(path: "/api/preflight" | "/api/compare") {
     setBusy(true); setError(""); setSingle(null); setCmp(null);
@@ -93,7 +110,16 @@ export default function Checker() {
           <div className="field">
             <label htmlFor="wallet">Your BSC address</label>
             <input id="wallet" className="mono" value={wallet} onChange={(e) => setWallet(e.target.value)} placeholder="0x and 40 characters" required autoComplete="off" spellCheck={false} aria-invalid={walletBad} aria-describedby="wallet-hint" />
-            <small id="wallet-hint" className={walletBad ? "bad" : "muted"}>{walletBad ? "That does not look like a BSC address." : "Read-only. No private key needed or accepted."}</small>
+            <div className="wallet-row">
+              <small id="wallet-hint" className={walletBad ? "bad" : "muted"}>{walletBad ? "That does not look like a BSC address." : "Read-only. No private key needed or accepted."}</small>
+              {provider && (
+                <button type="button" className="btn ghost small" onClick={useMyAddress}>
+                  {provider.isMetaMask ? "Use my MetaMask address" : "Use my wallet address"}
+                </button>
+              )}
+            </div>
+            {provider && <small className="muted">Your wallet will ask to share your address. Nothing is signed and no transaction is sent.</small>}
+            {walletMsg && <small className="bad" role="alert">{walletMsg}</small>}
           </div>
           <div className="actions">
             <button className="btn primary" type="submit" disabled={busy}>{busy ? "Checking..." : "Run the check"}</button>
