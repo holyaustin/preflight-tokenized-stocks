@@ -95,7 +95,9 @@ async function call(
   if (recentCalls.length > 200) recentCalls.shift();
 
   if (!res.ok || !json || json.code !== 0) {
-    throw new W3Error(code, json?.msg ?? res.statusText, res.status);
+    // 40304 = "Service not available due to compliance restriction": the API refused this server's location.
+    const hint = String(code) === "40304" ? " (the API blocked this server's region: change the hosting Function Region, then redeploy)" : "";
+    throw new W3Error(code, (json?.msg ?? res.statusText) + hint, res.status);
   }
   return json.data;
 }

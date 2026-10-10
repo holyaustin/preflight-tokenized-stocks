@@ -40,6 +40,9 @@ assert.equal(run({ stats: stats({ priceChange4H: 9 }) }).verdict, "GO");
 assert.equal(run({ snap: snap({ tokenPrice: 103 }) }).verdict, "BLOCK");
 assert.equal(run({ stats: stats({ volume24H: 20 }) }).verdict, "BLOCK"); // $5 is 25% of 24h volume
 assert.equal(run({ quote: null, approve: null, quoteError: "no routes" }).verdict, "BLOCK");
+const minRes = run({ usd: 0.5, quote: null, approve: null, quoteError: "40375: Minimum order amount is 5 USD." });
+assert.equal(minRes.verdict, "BLOCK");
+assert.ok(minRes.reasons.some((x) => x.code === "BELOW_VENUE_MINIMUM" && x.message.includes("$5")));
 assert.equal(run({ quote: quote({ priceImpactPct: -4 }) }).verdict, "BLOCK");
 assert.equal(run({ approve: approve({ spenderMatchesQuote: false, spender: "0xevil" }) }).verdict, "BLOCK");
 assert.equal(run({ quote: quote({ isHoneyPot: true }) }).verdict, "BLOCK");

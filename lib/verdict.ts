@@ -96,7 +96,11 @@ export function evaluate(i: Inputs, policy: Policy): { verdict: Level; reasons: 
 
   // ---- Real execution cost (Trading API quote)
   if (!quote) {
-    add("block", "execution", "NO_QUOTE", `No executable quote: ${i.quoteError ?? "unknown error"}`);
+    // The Trading API enforces a minimum order per venue (for example "40375: Minimum order amount is 5 USD.").
+    // Show that as its own clear reason instead of a generic "no quote".
+    const min = /minimum order amount is\s*\$?\s*([\d.]+)/i.exec(i.quoteError ?? "");
+    if (min) add("block", "execution", "BELOW_VENUE_MINIMUM", `This venue requires at least $${min[1]} per order, and you entered $${i.usd}. Raise the amount.`);
+    else add("block", "execution", "NO_QUOTE", `No executable quote: ${i.quoteError ?? "unknown error"}`);
   } else {
     if (quote.isHoneyPot) add("block", "security", "HONEYPOT", "Quote flags the token as a honeypot");
     if (quote.priceImpactPct == null) add("caution", "execution", "IMPACT_UNKNOWN", "Vendor did not report price impact");

@@ -77,6 +77,7 @@ export default function Checker() {
           <div className="field">
             <label htmlFor="usd">Amount (USD)</label>
             <input id="usd" type="number" inputMode="decimal" value={usd} onChange={(e) => setUsd(e.target.value)} min="0.01" step="any" required />
+            <small className="muted">Each venue sets a minimum order. If yours is too small, PreFlight tells you the amount.</small>
           </div>
           <fieldset className="field">
             <legend>Risk policy</legend>
