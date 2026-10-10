@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 560" width="1000" height="560" role="img" aria-label="Illustration of a PreFlight result">
+  <style>
+    .t{font-family:system-ui,-apple-system,'Segoe UI',Roboto,'DejaVu Sans',sans-serif;fill:#0f2238}
+    .h{font-family:Georgia,'Iowan Old Style','DejaVu Serif',serif;font-weight:700;fill:#0f2238}
+    .m{font-family:ui-monospace,'SF Mono',Menlo,Consolas,'DejaVu Sans Mono',monospace;fill:#5a6b80}
+    .mu{fill:#5a6b80}
+  </style>
+  <rect width="1000" height="560" rx="18" fill="#eef2f7"/>
+  <!-- pass -->
+  <rect x="40" y="40" width="920" height="250" rx="16" fill="#fff" stroke="#d6dee8" stroke-width="1.5"/>
+  <rect x="700" y="41" width="259" height="248" rx="15" fill="#f5ece0"/>
+  <path d="M700 41 V289" stroke="#d6dee8" stroke-width="2.5" stroke-dasharray="8 7"/>
+  <circle cx="700" cy="40" r="13" fill="#eef2f7" stroke="#d6dee8"/><circle cx="700" cy="290" r="13" fill="#eef2f7" stroke="#d6dee8"/>
+  <rect x="680" y="20" width="40" height="22" fill="#eef2f7"/><rect x="680" y="288" width="40" height="22" fill="#eef2f7"/>
+  <circle cx="700" cy="40" r="13" fill="#eef2f7" stroke="none"/><circle cx="700" cy="290" r="13" fill="#eef2f7" stroke="none"/>
+
+  <text x="70" y="82" class="t mu" font-size="12" font-weight="700" letter-spacing="1">PRE-TRADE CHECK</text>
+  <text x="640" y="82" class="m" font-size="13" text-anchor="end">14:02</text>
+  <text x="70" y="148" class="h" font-size="64">NVDA</text>
+  <text x="318" y="148" class="m" font-size="16">NVDAon</text>
+  <g class="t" font-size="13"><text x="70" y="188" class="mu">Platform</text><text x="190" y="188" class="mu">Amount</text><text x="300" y="188" class="mu">Policy</text><text x="420" y="188" class="mu">API calls</text></g>
+  <g class="t" font-size="16" font-weight="600"><text x="70" y="210">Ondo</text><text x="190" y="210">$5</text><text x="300" y="210">Balanced</text><text x="420" y="210">9</text></g>
+  <!-- sparkline -->
+  <path d="M70 262 L120 255 L170 258 L220 246 L270 250 L320 240 L370 244 L420 236 L470 241 L520 232 L570 237 L630 228 L630 275 L70 275 Z" fill="#a85f00" fill-opacity="0.14"/>
+  <path d="M70 262 L120 255 L170 258 L220 246 L270 250 L320 240 L370 244 L420 236 L470 241 L520 232 L570 237 L630 228" fill="none" stroke="#a85f00" stroke-width="2.5" stroke-linejoin="round"/>
+
+  <text x="730" y="82" class="t mu" font-size="12" font-weight="700" letter-spacing="1">VERDICT</text>
+  <text x="730" y="146" class="h" font-size="38" fill="#a85f00" style="fill:#a85f00">CAUTION</text>
+  <text x="730" y="178" class="t" font-size="15" font-weight="600">Review the cautions</text>
+  <text x="730" y="198" class="t" font-size="15" font-weight="600">before you trade.</text>
+  <text x="730" y="250" class="t mu" font-size="12" font-weight="700" letter-spacing="1">RECEIPT</text>
+  <text x="730" y="272" class="m" font-size="15" style="fill:#0f2238">9f2c41a7e0b35d18</text>
+
+  <!-- pills -->
+  <g font-family="system-ui,-apple-system,'Segoe UI',Roboto,'DejaVu Sans',sans-serif" font-size="14">
+    <rect x="40" y="312" width="118" height="32" rx="16" fill="#fff" stroke="#d6dee8"/><text x="60" y="333" fill="#17794a" font-weight="700">9</text><text x="74" y="333" fill="#0f2238">passed</text>
+    <rect x="168" y="312" width="118" height="32" rx="16" fill="#fff" stroke="#d6dee8"/><text x="188" y="333" fill="#a85f00" font-weight="700">1</text><text x="202" y="333" fill="#0f2238">caution</text>
+    <rect x="296" y="312" width="132" height="32" rx="16" fill="#fff" stroke="#d6dee8"/><text x="316" y="333" fill="#b3261e" font-weight="700">0</text><text x="330" y="333" fill="#0f2238">blocking</text>
+  </g>
+
+  <!-- tiles -->
+  <g>
+    <rect x="40" y="362" width="215" height="76" rx="12" fill="#fff" stroke="#d6dee8"/><text x="56" y="386" class="t mu" font-size="11" font-weight="700" letter-spacing="1">ON-CHAIN PRICE</text><text x="56" y="414" class="h" font-size="22">$128.40</text><text x="56" y="430" class="t mu" font-size="12">example values</text>
+    <rect x="270" y="362" width="215" height="76" rx="12" fill="#fff" stroke="#d6dee8"/><text x="286" y="386" class="t mu" font-size="11" font-weight="700" letter-spacing="1">SPREAD</text><text x="286" y="414" class="h" font-size="22">+0.08%</text><text x="286" y="430" class="t mu" font-size="12">on-chain vs reference</text>
+    <rect x="500" y="362" width="215" height="76" rx="12" fill="#fff" stroke="#d6dee8"/><text x="516" y="386" class="t mu" font-size="11" font-weight="700" letter-spacing="1">4H MOVE</text><text x="516" y="414" class="h" font-size="22">+0.30%</text><text x="516" y="430" class="t mu" font-size="12">no equity price now</text>
+    <rect x="730" y="362" width="230" height="76" rx="12" fill="#fff" stroke="#d6dee8"/><text x="746" y="386" class="t mu" font-size="11" font-weight="700" letter-spacing="1">EQUITY MARKET</text><text x="746" y="414" class="h" font-size="22">closed</text><text x="746" y="430" class="t mu" font-size="12">opens Mon 14:30</text>
+  </g>
+  <!-- checks -->
+  <rect x="40" y="456" width="920" height="68" rx="12" fill="#fff" stroke="#d6dee8"/>
+  <circle cx="66" cy="490" r="12" fill="#a85f00"/><text x="66" y="495" text-anchor="middle" font-family="system-ui,sans-serif" font-size="14" font-weight="800" fill="#fff">!</text>
+  <text x="90" y="484" class="t" font-size="15"><tspan font-weight="700" fill="#a85f00">Caution.</tspan> Underlying market is closed: on-chain trading continues without a live equity price.</text>
+  <text x="90" y="506" class="m" font-size="12">UNDERLYING_CLOSED</text>
+  <text x="500" y="548" text-anchor="middle" class="t mu" font-size="12">Illustration of the result card. Values are examples, not live data.</text>
+</svg>

@@ -1,0 +1,95 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 660" width="1200" height="660" role="img" aria-label="PreFlight architecture">
+  <style>
+    .t{font-family:system-ui,-apple-system,'Segoe UI',Roboto,'DejaVu Sans',sans-serif;fill:#0f2238}
+    .h{font-family:Georgia,'Iowan Old Style','DejaVu Serif',serif;font-weight:700;fill:#0f2238}
+    .m{font-family:ui-monospace,'SF Mono',Menlo,Consolas,'DejaVu Sans Mono',monospace;fill:#0f2238}
+    .box{fill:#fff;stroke:#c3cfdc;stroke-width:1.5}
+    .col{fill:#e4ebf3;stroke:none}
+    .arrow{stroke:#2160c4;stroke-width:2.2;fill:none;marker-end:url(#a)}
+  </style>
+  <defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M0 0L10 5L0 10z" fill="#2160c4"/></marker></defs>
+  <rect width="1200" height="660" rx="18" fill="#f4f7fb"/>
+  <text x="40" y="52" class="h" font-size="28">How the pieces fit</text>
+
+  <!-- column backgrounds -->
+  <rect x="30" y="80" width="250" height="470" rx="14" class="col"/>
+  <rect x="320" y="80" width="560" height="470" rx="14" class="col"/>
+  <rect x="920" y="80" width="250" height="470" rx="14" class="col"/>
+  <text x="155" y="108" text-anchor="middle" class="t" font-size="15" font-weight="700">CALLERS</text>
+  <text x="600" y="108" text-anchor="middle" class="t" font-size="15" font-weight="700">PREFLIGHT (Next.js, deployed on Vercel)</text>
+  <text x="1045" y="108" text-anchor="middle" class="t" font-size="15" font-weight="700">BINANCE WEB3 API</text>
+
+  <!-- callers -->
+  <g>
+    <rect x="50" y="135" width="210" height="84" rx="10" class="box"/>
+    <text x="155" y="170" text-anchor="middle" class="t" font-size="17" font-weight="700">AI agent</text>
+    <text x="155" y="194" text-anchor="middle" class="t" font-size="13">any MCP client</text>
+    <rect x="50" y="260" width="210" height="84" rx="10" class="box"/>
+    <text x="155" y="295" text-anchor="middle" class="t" font-size="17" font-weight="700">Browser</text>
+    <text x="155" y="319" text-anchor="middle" class="t" font-size="13">the web app</text>
+    <rect x="50" y="385" width="210" height="84" rx="10" class="box"/>
+    <text x="155" y="420" text-anchor="middle" class="t" font-size="17" font-weight="700">Scripts</text>
+    <text x="155" y="444" text-anchor="middle" class="t" font-size="13">curl, your own code</text>
+  </g>
+
+  <!-- entry points -->
+  <g>
+    <rect x="345" y="130" width="230" height="46" rx="9" class="box"/>
+    <text x="460" y="159" text-anchor="middle" class="m" font-size="14">mcp/server.ts (stdio)</text>
+    <rect x="345" y="188" width="230" height="46" rx="9" class="box"/>
+    <text x="460" y="217" text-anchor="middle" class="m" font-size="14">/api/mcp (HTTP)</text>
+    <rect x="345" y="262" width="230" height="46" rx="9" class="box"/>
+    <text x="460" y="291" text-anchor="middle" class="m" font-size="14">app/page.tsx (UI)</text>
+    <rect x="345" y="387" width="230" height="46" rx="9" class="box"/>
+    <text x="460" y="416" text-anchor="middle" class="m" font-size="14">/api/preflight, /api/compare</text>
+  </g>
+
+  <!-- core -->
+  <rect x="620" y="135" width="235" height="390" rx="12" fill="#fff" stroke="#2160c4" stroke-width="2"/>
+  <text x="737" y="166" text-anchor="middle" class="h" font-size="19">lib/ core</text>
+  <g class="t" font-size="14" text-anchor="middle">
+    <rect x="636" y="184" width="203" height="58" rx="8" fill="#eef3fa"/>
+    <text x="737" y="208" class="m" font-size="13">preflight.ts</text><text x="737" y="228" font-size="12">runs the checks</text>
+    <rect x="636" y="254" width="203" height="58" rx="8" fill="#eef3fa"/>
+    <text x="737" y="278" class="m" font-size="13">verdict.ts + policy.ts</text><text x="737" y="298" font-size="12">GO / CAUTION / BLOCK</text>
+    <rect x="636" y="324" width="203" height="58" rx="8" fill="#eef3fa"/>
+    <text x="737" y="348" class="m" font-size="13">receipt.ts</text><text x="737" y="368" font-size="12">SHA-256 (+ optional HMAC)</text>
+    <rect x="636" y="394" width="203" height="58" rx="8" fill="#eef3fa"/>
+    <text x="737" y="418" class="m" font-size="13">client.ts</text><text x="737" y="438" font-size="12">signed requests, throttle</text>
+    <rect x="636" y="464" width="203" height="46" rx="8" fill="#eef3fa"/>
+    <text x="737" y="484" class="m" font-size="13">rwa / market / wallet</text><text x="737" y="500" class="m" font-size="13">/ quote .ts</text>
+  </g>
+
+  <!-- API modules -->
+  <g class="t" text-anchor="middle">
+    <rect x="940" y="135" width="210" height="62" rx="10" class="box"/>
+    <text x="1045" y="162" font-size="15" font-weight="700">RWA Data</text><text x="1045" y="183" font-size="12">4 endpoints</text>
+    <rect x="940" y="209" width="210" height="62" rx="10" class="box"/>
+    <text x="1045" y="236" font-size="15" font-weight="700">Market data</text><text x="1045" y="257" font-size="12">2 endpoints</text>
+    <rect x="940" y="283" width="210" height="62" rx="10" class="box"/>
+    <text x="1045" y="310" font-size="15" font-weight="700">Wallet</text><text x="1045" y="331" font-size="12">1 endpoint</text>
+    <rect x="940" y="357" width="210" height="62" rx="10" class="box"/>
+    <text x="1045" y="384" font-size="15" font-weight="700">Trading</text><text x="1045" y="405" font-size="12">3 endpoints (1 optional)</text>
+    <rect x="940" y="431" width="210" height="62" rx="10" class="box"/>
+    <text x="1045" y="458" font-size="15" font-weight="700">Transaction</text><text x="1045" y="479" font-size="12">1 endpoint (simulate)</text>
+  </g>
+
+  <!-- arrows -->
+  <path class="arrow" d="M262 177 C300 177 305 153 343 153"/>
+  <path class="arrow" d="M262 190 C300 190 305 211 343 211"/>
+  <path class="arrow" d="M262 302 L343 285"/>
+  <path class="arrow" d="M262 427 L343 410"/>
+  <path class="arrow" d="M577 153 C600 153 600 190 618 190"/>
+  <path class="arrow" d="M577 211 L618 230"/>
+  <path class="arrow" d="M577 285 L618 300"/>
+  <path class="arrow" d="M577 410 L618 410"/>
+  <path class="arrow" d="M857 330 L938 330"/>
+  <text x="898" y="318" text-anchor="middle" class="t" font-size="12">signed</text>
+
+  <!-- output -->
+  <rect x="345" y="580" width="810" height="56" rx="12" fill="#0f2238"/>
+  <text x="750" y="615" text-anchor="middle" font-family="system-ui,-apple-system,'Segoe UI',Roboto,'DejaVu Sans',sans-serif" font-size="17" fill="#fff">Result: verdict + categorized reasons + evidence + tamper-evident receipt</text>
+  <path class="arrow" d="M737 528 L737 578"/>
+  <text x="40" y="620" class="t" font-size="13">Read-only: no keys held,</text>
+  <text x="40" y="640" class="t" font-size="13">nothing signed or broadcast.</text>
+</svg>

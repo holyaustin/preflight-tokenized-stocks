@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 330" width="1280" height="330" role="img" aria-label="PreFlight: check the trade before you make it">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0f2238"/><stop offset="1" stop-color="#173a63"/>
+    </linearGradient>
+  </defs>
+  <rect width="1280" height="330" rx="22" fill="url(#bg)"/>
+  <!-- faint runway lines -->
+  <g stroke="#ffffff" stroke-opacity="0.06" stroke-width="2">
+    <path d="M700 330 L900 0"/><path d="M820 330 L960 0"/><path d="M940 330 L1020 0"/><path d="M1060 330 L1080 0"/>
+  </g>
+  <!-- logo -->
+  <rect x="72" y="76" width="84" height="84" rx="22" fill="#ffffff"/>
+  <path d="M92 138 l17 -17 10 10 20 -20 M105 106 h22 v22" transform="translate(-2 -2)" fill="none" stroke="#0f2238" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="180" y="142" font-family="Georgia, 'Iowan Old Style', 'DejaVu Serif', serif" font-size="68" font-weight="700" fill="#ffffff">PreFlight</text>
+  <text x="74" y="212" font-family="Georgia, 'Iowan Old Style', 'DejaVu Serif', serif" font-size="34" font-style="italic" fill="#cfe0f5">Check the trade before you make it.</text>
+  <text x="74" y="256" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'DejaVu Sans', sans-serif" font-size="21" fill="#9db4d0">Pre-trade safety gate for tokenized stocks on BNB Smart Chain</text>
+  <text x="74" y="288" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'DejaVu Sans', sans-serif" font-size="17" fill="#7f98b8">Web app · HTTP API · MCP server · verifiable receipts</text>
+  <!-- verdict pills -->
+  <g font-family="Georgia, 'Iowan Old Style', 'DejaVu Serif', serif" font-weight="700" font-size="30" text-anchor="middle">
+    <rect x="930" y="66" width="270" height="62" rx="31" fill="none" stroke="#4cc78a" stroke-width="3"/>
+    <text x="1065" y="107" fill="#4cc78a">GO</text>
+    <rect x="930" y="144" width="270" height="62" rx="31" fill="none" stroke="#f0b04a" stroke-width="3"/>
+    <text x="1065" y="185" fill="#f0b04a">CAUTION</text>
+    <rect x="930" y="222" width="270" height="62" rx="31" fill="none" stroke="#ff8076" stroke-width="3"/>
+    <text x="1065" y="263" fill="#ff8076">BLOCK</text>
+  </g>
+</svg>

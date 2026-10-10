@@ -12,12 +12,22 @@ const CATEGORIES: Record<string, string> = {
   security: "Safety",
 };
 const LEVEL_TEXT: Record<string, string> = { info: "Pass", caution: "Caution", block: "Blocked" };
-const LEVEL_GLYPH: Record<string, string> = { info: "✓", caution: "!", block: "✕" };
 const MEANING: Record<string, string> = {
   GO: "Cleared to trade.",
   CAUTION: "Review the cautions before you trade.",
   BLOCK: "Do not trade.",
 };
+
+// Drawn icons: same 24x24 box, same stroke weight, centered, so check / exclamation / cross match exactly.
+function Icon({ level }: { level: string }) {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" focusable="false">
+      {level === "info" && <path d="M6 12.5l4 4 8-9" />}
+      {level === "block" && <path d="M7 7l10 10M17 7L7 17" />}
+      {level === "caution" && <path d="M12 5.5v8M12 18h.01" />}
+    </svg>
+  );
+}
 
 const money = (n: number) => (Number.isFinite(n) ? `$${n.toLocaleString("en-US", { maximumFractionDigits: n < 10 ? 4 : 2 })}` : "n/a");
 const pct = (n: number | null | undefined) => (n == null || !Number.isFinite(n) ? "n/a" : `${n > 0 ? "+" : ""}${n.toFixed(2)}%`);
@@ -112,9 +122,9 @@ export default function Result({ r, title }: { r: PreflightResult; title?: strin
       </article>
 
       <div className="counts" role="list">
-        <span role="listitem" className="pill info"><b>{count("info")}</b> passed</span>
-        <span role="listitem" className="pill caution"><b>{count("caution")}</b> caution</span>
-        <span role="listitem" className="pill block"><b>{count("block")}</b> blocking</span>
+        <div role="listitem" className="pill info"><b>{count("info")}</b><span>passed</span></div>
+        <div role="listitem" className="pill caution"><b>{count("caution")}</b><span>caution</span></div>
+        <div role="listitem" className="pill block"><b>{count("block")}</b><span>blocking</span></div>
       </div>
 
       <div className="tiles">
@@ -142,7 +152,7 @@ export default function Result({ r, title }: { r: PreflightResult; title?: strin
             <ul>
               {g.items.map((x, i) => (
                 <li key={i}>
-                  <span className={`badge ${x.level}`} aria-hidden="true">{LEVEL_GLYPH[x.level]}</span>
+                  <span className={`badge ${x.level}`} aria-hidden="true"><Icon level={x.level} /></span>
                   <div>
                     <p><span className={`lvl ${x.level}`}>{LEVEL_TEXT[x.level]}.</span> {x.message}</p>
                     <span className="code">{x.code}</span>

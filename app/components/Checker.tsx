@@ -94,7 +94,7 @@ export default function Checker() {
           <div className="field">
             <label htmlFor="usd">Amount (USD)</label>
             <input id="usd" type="number" inputMode="decimal" value={usd} onChange={(e) => setUsd(e.target.value)} min="0.01" step="any" required />
-            <small className="muted">Each venue sets a minimum order. If yours is too small, PreFlight tells you the amount.</small>
+            <small className="muted">Each venue sets a minimum order.</small>
           </div>
           <fieldset className="field">
             <legend>Risk policy</legend>
@@ -111,14 +111,14 @@ export default function Checker() {
             <label htmlFor="wallet">Your BSC address</label>
             <input id="wallet" className="mono" value={wallet} onChange={(e) => setWallet(e.target.value)} placeholder="0x and 40 characters" required autoComplete="off" spellCheck={false} aria-invalid={walletBad} aria-describedby="wallet-hint" />
             <div className="wallet-row">
-              <small id="wallet-hint" className={walletBad ? "bad" : "muted"}>{walletBad ? "That does not look like a BSC address." : "Read-only. No private key needed or accepted."}</small>
+              <small id="wallet-hint" className={walletBad ? "bad" : "muted"}>{walletBad ? "That does not look like a BSC address." : "Read-only. No private key needed."}</small>
               {provider && (
                 <button type="button" className="btn ghost small" onClick={useMyAddress}>
                   {provider.isMetaMask ? "Use my MetaMask address" : "Use my wallet address"}
                 </button>
               )}
             </div>
-            {provider && <small className="muted">Your wallet will ask to share your address. Nothing is signed and no transaction is sent.</small>}
+            {provider && <small className="muted">Nothing is signed and no transaction is sent.</small>}
             {walletMsg && <small className="bad" role="alert">{walletMsg}</small>}
           </div>
           <div className="actions">

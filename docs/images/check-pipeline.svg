@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 640" width="1200" height="640" role="img" aria-label="What PreFlight checks, step by step">
+  <style>
+    .t{font-family:system-ui,-apple-system,'Segoe UI',Roboto,'DejaVu Sans',sans-serif;fill:#0f2238}
+    .h{font-family:Georgia,'Iowan Old Style','DejaVu Serif',serif;font-weight:700;fill:#0f2238}
+    .m{font-family:ui-monospace,'SF Mono',Menlo,Consolas,'DejaVu Sans Mono',monospace;fill:#2160c4}
+    .row{fill:#fff;stroke:#c3cfdc;stroke-width:1.5}
+    .arrow{stroke:#2160c4;stroke-width:2.2;fill:none;marker-end:url(#a)}
+  </style>
+  <defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M0 0L10 5L0 10z" fill="#2160c4"/></marker></defs>
+  <rect width="1200" height="640" rx="18" fill="#f4f7fb"/>
+  <text x="40" y="52" class="h" font-size="28">What one check does</text>
+  <text x="40" y="80" class="t" font-size="15" fill="#5a6b80">Input: ticker, USD amount, BSC address, policy. Each step feeds a category of reasons.</text>
+
+  <g class="t">
+    <!-- row template: y positions 105,175,245,315,385,455 -->
+    <rect x="40" y="105" width="800" height="60" rx="10" class="row"/><circle cx="72" cy="135" r="15" fill="#0f2238"/><text x="72" y="141" text-anchor="middle" font-size="15" font-weight="700" fill="#fff">1</text>
+    <text x="102" y="129" font-size="16" font-weight="700">Resolve the token</text><text x="102" y="151" font-size="13" fill="#5a6b80">Which Ondo and bStock tokens exist on BSC</text>
+    <text x="520" y="141" class="m" font-size="13">rwa/search</text>
+
+    <rect x="40" y="175" width="800" height="60" rx="10" class="row"/><circle cx="72" cy="205" r="15" fill="#0f2238"/><text x="72" y="211" text-anchor="middle" font-size="15" font-weight="700" fill="#fff">2</text>
+    <text x="102" y="199" font-size="16" font-weight="700">Market and price</text><text x="102" y="221" font-size="13" fill="#5a6b80">Open or closed, pauses, spread, price age</text>
+    <text x="520" y="199" class="m" font-size="12">rwa/price, rwa/underlying-market,</text><text x="520" y="217" class="m" font-size="12">rwa/underlying-profile</text>
+
+    <rect x="40" y="245" width="800" height="60" rx="10" class="row"/><circle cx="72" cy="275" r="15" fill="#0f2238"/><text x="72" y="281" text-anchor="middle" font-size="15" font-weight="700" fill="#fff">3</text>
+    <text x="102" y="269" font-size="16" font-weight="700">Liquidity and drift</text><text x="102" y="291" font-size="13" fill="#5a6b80">4h drift, size vs 24h volume, sparkline</text>
+    <text x="520" y="281" class="m" font-size="12">market/price-info, market/candles</text>
+
+    <rect x="40" y="315" width="800" height="60" rx="10" class="row"/><circle cx="72" cy="345" r="15" fill="#0f2238"/><text x="72" y="351" text-anchor="middle" font-size="15" font-weight="700" fill="#fff">4</text>
+    <text x="102" y="339" font-size="16" font-weight="700">Wallet readiness</text><text x="102" y="361" font-size="13" fill="#5a6b80">Enough USDT for the trade, enough BNB for gas</text>
+    <text x="520" y="351" class="m" font-size="12">balance/token-balances-by-address</text>
+
+    <rect x="40" y="385" width="800" height="60" rx="10" class="row"/><circle cx="72" cy="415" r="15" fill="#0f2238"/><text x="72" y="421" text-anchor="middle" font-size="15" font-weight="700" fill="#fff">5</text>
+    <text x="102" y="409" font-size="16" font-weight="700">Real quote</text><text x="102" y="431" font-size="13" fill="#5a6b80">Impact, fill vs price, honeypot, minimum</text>
+    <text x="520" y="421" class="m" font-size="12">aggregator/quote</text>
+
+    <rect x="40" y="455" width="800" height="60" rx="10" class="row"/><circle cx="72" cy="485" r="15" fill="#0f2238"/><text x="72" y="491" text-anchor="middle" font-size="15" font-weight="700" fill="#fff">6</text>
+    <text x="102" y="479" font-size="16" font-weight="700">Approval dry-run</text><text x="102" y="501" font-size="13" fill="#5a6b80">Simulate it, check the spender matches</text>
+    <text x="520" y="485" class="m" font-size="12">aggregator/approve-transaction</text><text x="520" y="501" class="m" font-size="12">pre-transaction/simulate</text>
+
+    <rect x="40" y="525" width="800" height="46" rx="10" fill="#eef3fa" stroke="#c3cfdc" stroke-dasharray="6 5" stroke-width="1.5"/>
+    <text x="102" y="553" font-size="14" fill="#5a6b80">Optional "deep" mode: try an AMM swap and simulate it</text>
+    <text x="520" y="553" class="m" font-size="12">aggregator/quote-and-swap</text>
+  </g>
+
+  <!-- policy + verdict -->
+  <path class="arrow" d="M842 330 L898 330"/>
+  <rect x="900" y="105" width="260" height="466" rx="14" fill="#fff" stroke="#2160c4" stroke-width="2"/>
+  <text x="1030" y="140" text-anchor="middle" class="h" font-size="20">Policy engine</text>
+  <text x="1030" y="164" text-anchor="middle" class="t" font-size="13" fill="#5a6b80">cautious, balanced, permissive</text>
+  <g class="t" font-size="15" font-weight="700" text-anchor="middle">
+    <rect x="925" y="190" width="210" height="52" rx="10" fill="none" stroke="#b3261e" stroke-width="2.5"/><text x="1030" y="213" fill="#b3261e">Any blocking reason</text><text x="1030" y="232" font-size="14" fill="#b3261e">BLOCK</text>
+    <rect x="925" y="258" width="210" height="52" rx="10" fill="none" stroke="#a85f00" stroke-width="2.5"/><text x="1030" y="281" fill="#a85f00">Any caution</text><text x="1030" y="300" font-size="14" fill="#a85f00">CAUTION</text>
+    <rect x="925" y="326" width="210" height="52" rx="10" fill="none" stroke="#17794a" stroke-width="2.5"/><text x="1030" y="349" fill="#17794a">Everything passes</text><text x="1030" y="368" font-size="14" fill="#17794a">GO</text>
+  </g>
+  <path d="M1030 392 L1030 420" stroke="#2160c4" stroke-width="2.2" fill="none" marker-end="url(#a)"/>
+  <rect x="925" y="424" width="210" height="122" rx="10" fill="#0f2238"/>
+  <g font-family="system-ui,-apple-system,'Segoe UI',Roboto,'DejaVu Sans',sans-serif" fill="#fff" text-anchor="middle">
+    <text x="1030" y="455" font-size="16" font-weight="700">Receipt</text>
+    <text x="1030" y="480" font-size="12.5">canonical JSON</text>
+    <text x="1030" y="499" font-size="12.5">SHA-256 hash</text>
+    <text x="1030" y="518" font-size="12.5">optional HMAC</text>
+    <text x="1030" y="537" font-size="12.5">every API call listed</text>
+  </g>
+  <text x="40" y="606" class="t" font-size="13" fill="#5a6b80">If one data source fails (liquidity, wallet, approval), the check still finishes and shows a caution for it. Only the RWA snapshot is mandatory.</text>
+</svg>

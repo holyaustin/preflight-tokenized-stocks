@@ -16,7 +16,7 @@ export default function Page() {
         <a className="brand" href="#top" aria-label="PreFlight home">
           <svg width="26" height="26" viewBox="0 0 26 26" aria-hidden="true">
             <rect width="26" height="26" rx="7" fill="currentColor" />
-            <path d="M6 17l5-5 3 3 6-6M15 9h5v5" fill="none" stroke="var(--bg)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+            <path d="M6 17l5-5 3 3 6-6M15 9h5v5" fill="none" stroke="var(--bg)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" suppressHydrationWarning />
           </svg>
           PreFlight
         </a>
